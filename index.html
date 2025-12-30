@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Interactive RCS OR Plots</title>
-  <style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Multivariable RCS OR Plots</title>
+<style>
     :root {
       --bg:#0b1020; --panel:#0f1730; --card:#121c3a; --text:#e9ecf5; --muted:#a9b2c9;
       --line:rgba(255,255,255,.10); --btn:#1b2a57; --btn2:#20346d; --accent:#7aa2ff;
@@ -80,338 +80,389 @@
           padding:1px 6px;border-radius:8px;border:1px solid var(--line);background:rgba(255,255,255,.04);}
   </style>
 </head>
+
 <body>
-<div class="wrap">
-  <div class="top">
-    <div class="title">Interactive Multivariable RCS OR Plots</div>
-    <div class="subtitle">
-      Each lab card provides direct access to both outcomes:
-      <b>14 Day Death</b> · <b>6 Month Unfavorable Outcome (GOSE ≤ 4)</b>
+  <div class="wrap">
+    <div class="top">
+      <div class="title">Interactive Multivariable RCS OR Plots</div>
+      <div class="subtitle">
+        Click a button to open the corresponding interactive plot.<br>
+        <b>14D</b>: 14 Day Death &nbsp;&nbsp; <b>6M</b>: 6 Month Unfavorable Outcome (GOSE ≤ 4)
+      </div>
+      <div class="bar">
+        <input id="q" class="search" placeholder="Search (e.g., AST, PT, glucose)..." />
+        <span class="chip"><b>Tip</b> Search filters both Primary & Secondary cards</span>
+      </div>
     </div>
-    <div class="bar">
-      <input id="q" class="search" placeholder="Search lab (e.g., Glucose, AST, Creatinine, INR, Total CO₂...)"/>
-      <span class="chip">Outcomes: <b>2</b> (14D / 6M)</span>
-      <span class="chip">Panels: <b>Primary</b> + <b>Secondary</b></span>
-    </div>
+
+    <div class="section">
+      <div class="sectionhead">
+        <div class="h2">Primary panel</div>
+        <div class="note">Core labs</div>
+      </div>
+      <div class="grid">
+<!-- (cards unchanged; JS will prettify display) -->
+<div class="card" data-lab="Glucose" data-group="Primary">
+  <div class="cardhead">
+    <div class="labname">Glucose</div>
+    <div class="labcode">Glucose</div>
   </div>
-
-  <div class="section" id="primary">
-    <div class="sectionhead">
-      <div class="h2">Primary panel</div>
-      <div class="note">Clinically core panel</div>
-    </div>
-    <div class="grid">
-
-      <div class="card" data-lab="Glucose" data-group="Primary">
-        <div class="cardhead">
-          <div class="labname">Glucose</div>
-          <div class="labcode">Glucose</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_Glucose_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_Glucose_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="CRP" data-group="Primary">
-        <div class="cardhead">
-          <div class="labname">CRP</div>
-          <div class="labcode">CRP</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_CRP_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_CRP_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="Hemoglobin" data-group="Primary">
-        <div class="cardhead">
-          <div class="labname">Hemoglobin</div>
-          <div class="labcode">Hemoglobin</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_Hemoglobin_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_Hemoglobin_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="Albumin" data-group="Primary">
-        <div class="cardhead">
-          <div class="labname">Albumin</div>
-          <div class="labcode">Albumin</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_Albumin_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_Albumin_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="Creatinine" data-group="Primary">
-        <div class="cardhead">
-          <div class="labname">Creatinine</div>
-          <div class="labcode">Creatinine</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_Creatinine_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_Creatinine_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="Platelet" data-group="Primary">
-        <div class="cardhead">
-          <div class="labname">Platelet</div>
-          <div class="labcode">Platelet</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_Platelet_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_Platelet_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="INR" data-group="Primary">
-        <div class="cardhead">
-          <div class="labname">INR</div>
-          <div class="labcode">INR</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_INR_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_INR_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="Sodium" data-group="Primary">
-        <div class="cardhead">
-          <div class="labname">Sodium</div>
-          <div class="labcode">Sodium</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_Sodium_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_Sodium_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="section" id="secondary">
-    <div class="sectionhead">
-      <div class="h2">Secondary panel</div>
-      <div class="note">Grouped by physiological systems</div>
-    </div>
-
-    <div class="grouphead">Liver function / tissue injury</div>
-    <div class="grid">
-
-      <div class="card" data-lab="AST" data-group="Liver function / tissue injury">
-        <div class="cardhead">
-          <div class="labname">AST</div>
-          <div class="labcode">AST</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_AST_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_AST_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="ALT" data-group="Liver function / tissue injury">
-        <div class="cardhead">
-          <div class="labname">ALT</div>
-          <div class="labcode">ALT</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_ALT_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_ALT_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="ALP" data-group="Liver function / tissue injury">
-        <div class="cardhead">
-          <div class="labname">ALP</div>
-          <div class="labcode">ALP</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_ALP_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_ALP_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="Total_Bilirubin" data-group="Liver function / tissue injury">
-        <div class="cardhead">
-          <div class="labname">Total bilirubin</div>
-          <div class="labcode">Total_Bilirubin</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_Total_Bilirubin_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_Total_Bilirubin_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="Total_Protein" data-group="Liver function / tissue injury">
-        <div class="cardhead">
-          <div class="labname">Total protein</div>
-          <div class="labcode">Total_Protein</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_Total_Protein_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_Total_Protein_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="Total_Cholesterol" data-group="Liver function / tissue injury">
-        <div class="cardhead">
-          <div class="labname">Total cholesterol</div>
-          <div class="labcode">Total_Cholesterol</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_Total_Cholesterol_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_Total_Cholesterol_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="grouphead">Renal function / nitrogen metabolism</div>
-    <div class="grid">
-
-      <div class="card" data-lab="BUN" data-group="Renal function / nitrogen metabolism">
-        <div class="cardhead">
-          <div class="labname">BUN</div>
-          <div class="labcode">BUN</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_BUN_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_BUN_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="Uric_acid" data-group="Renal function / nitrogen metabolism">
-        <div class="cardhead">
-          <div class="labname">Uric acid</div>
-          <div class="labcode">Uric_acid</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_Uric_acid_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_Uric_acid_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="grouphead">Electrolytes / acid–base balance</div>
-    <div class="grid">
-
-      <div class="card" data-lab="Potassium" data-group="Electrolytes / acid–base balance">
-        <div class="cardhead">
-          <div class="labname">Potassium</div>
-          <div class="labcode">Potassium</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_Potassium_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_Potassium_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="Calcium" data-group="Electrolytes / acid–base balance">
-        <div class="cardhead">
-          <div class="labname">Calcium</div>
-          <div class="labcode">Calcium</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_Calcium_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_Calcium_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="Chloride" data-group="Electrolytes / acid–base balance">
-        <div class="cardhead">
-          <div class="labname">Chloride</div>
-          <div class="labcode">Chloride</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_Chloride_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_Chloride_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="Total_CO2" data-group="Electrolytes / acid–base balance">
-        <div class="cardhead">
-          <div class="labname">Total CO₂</div>
-          <div class="labcode">Total_CO2</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_Total_CO2_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_Total_CO2_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="grouphead">Inflammation / cell counts</div>
-    <div class="grid">
-
-      <div class="card" data-lab="WBC" data-group="Inflammation / cell counts">
-        <div class="cardhead">
-          <div class="labname">WBC</div>
-          <div class="labcode">WBC</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_WBC_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_WBC_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="grouphead">Muscle / myocardial enzymes</div>
-    <div class="grid">
-
-      <div class="card" data-lab="Creatine_Kinase" data-group="Muscle / myocardial enzymes">
-        <div class="cardhead">
-          <div class="labname">Creatine kinase</div>
-          <div class="labcode">Creatine_Kinase</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_Creatine_Kinase_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_Creatine_Kinase_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-      <div class="card" data-lab="CK_MB" data-group="Muscle / myocardial enzymes">
-        <div class="cardhead">
-          <div class="labname">CK‑MB</div>
-          <div class="labcode">CK_MB</div>
-        </div>
-        <div class="btnrow">
-          <a class="btn" href="plots/14day_death_CK_MB_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
-          <a class="btn" href="plots/GOSE_6Month_Unfavorable_CK_MB_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="divider"></div>
-  <div class="footer">
-    Typing in the search box filters the cards. (e.g., <span class="kbd">AST</span>, <span class="kbd">Total CO₂</span>)<br/>
-    For links to work, keep <b>index.html</b> in <b>RCS_interactive_plots</b>, and keep the plot HTML files in <b>RCS_interactive_plots/plots</b>.
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_Glucose_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_Glucose_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
   </div>
 </div>
 
-<script>
-  const q = document.getElementById('q');
-  const cards = Array.from(document.querySelectorAll('.card'));
-  function norm(s){ return (s||'').toLowerCase().replace(/\s+/g,''); }
-  function run(){
-    const term = norm(q.value);
-    cards.forEach(c=>{
-      const lab = norm(c.getAttribute('data-lab'));
-      const txt = norm(c.innerText);
-      const ok = (!term) || lab.includes(term) || txt.includes(term);
-      c.classList.toggle('hidden', !ok);
+<div class="card" data-lab="CRP" data-group="Primary">
+  <div class="cardhead">
+    <div class="labname">CRP</div>
+    <div class="labcode">CRP</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_CRP_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_CRP_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="Hemoglobin" data-group="Primary">
+  <div class="cardhead">
+    <div class="labname">Hemoglobin</div>
+    <div class="labcode">Hemoglobin</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_Hemoglobin_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_Hemoglobin_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="Albumin" data-group="Primary">
+  <div class="cardhead">
+    <div class="labname">Albumin</div>
+    <div class="labcode">Albumin</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_Albumin_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_Albumin_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="Creatinine" data-group="Primary">
+  <div class="cardhead">
+    <div class="labname">Creatinine</div>
+    <div class="labcode">Creatinine</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_Creatinine_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_Creatinine_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="Platelet" data-group="Primary">
+  <div class="cardhead">
+    <div class="labname">Platelet</div>
+    <div class="labcode">Platelet</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_Platelet_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_Platelet_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="INR" data-group="Primary">
+  <div class="cardhead">
+    <div class="labname">INR</div>
+    <div class="labcode">INR</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_INR_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_INR_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="Sodium" data-group="Primary">
+  <div class="cardhead">
+    <div class="labname">Sodium</div>
+    <div class="labcode">Sodium</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_Sodium_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_Sodium_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="sectionhead">
+        <div class="h2">Secondary panel</div>
+        <div class="note">Additional labs (aPTT/PT are placed here)</div>
+      </div>
+
+      <div class="grouphead">Coagulation</div>
+      <div class="grid">
+<div class="card" data-lab="aPTT" data-group="Coagulation">
+  <div class="cardhead">
+    <div class="labname">aPTT</div>
+    <div class="labcode">aPTT</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_aPTT_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_aPTT_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="PT" data-group="Coagulation">
+  <div class="cardhead">
+    <div class="labname">PT</div>
+    <div class="labcode">PT</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_PT_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_PT_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+      </div>
+
+      <div class="grouphead">Liver function / tissue injury</div>
+      <div class="grid">
+<!-- (cards unchanged; JS will prettify display) -->
+<div class="card" data-lab="AST" data-group="Liver function / tissue injury">
+  <div class="cardhead">
+    <div class="labname">AST</div>
+    <div class="labcode">AST</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_AST_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_AST_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="ALT" data-group="Liver function / tissue injury">
+  <div class="cardhead">
+    <div class="labname">ALT</div>
+    <div class="labcode">ALT</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_ALT_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_ALT_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="ALP" data-group="Liver function / tissue injury">
+  <div class="cardhead">
+    <div class="labname">ALP</div>
+    <div class="labcode">ALP</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_ALP_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_ALP_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="Total_Bilirubin" data-group="Liver function / tissue injury">
+  <div class="cardhead">
+    <div class="labname">Total_Bilirubin</div>
+    <div class="labcode">Total_Bilirubin</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_Total_Bilirubin_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_Total_Bilirubin_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="Total_Protein" data-group="Liver function / tissue injury">
+  <div class="cardhead">
+    <div class="labname">Total_Protein</div>
+    <div class="labcode">Total_Protein</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_Total_Protein_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_Total_Protein_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="Total_Cholesterol" data-group="Liver function / tissue injury">
+  <div class="cardhead">
+    <div class="labname">Total_Cholesterol</div>
+    <div class="labcode">Total_Cholesterol</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_Total_Cholesterol_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_Total_Cholesterol_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+      </div>
+
+      <div class="grouphead">Renal function / nitrogen metabolism</div>
+      <div class="grid">
+<div class="card" data-lab="BUN" data-group="Renal function / nitrogen metabolism">
+  <div class="cardhead">
+    <div class="labname">BUN</div>
+    <div class="labcode">BUN</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_BUN_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_BUN_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="Uric_acid" data-group="Renal function / nitrogen metabolism">
+  <div class="cardhead">
+    <div class="labname">Uric_acid</div>
+    <div class="labcode">Uric_acid</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_Uric_acid_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_Uric_acid_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+      </div>
+
+      <div class="grouphead">Electrolytes / acid–base balance</div>
+      <div class="grid">
+<div class="card" data-lab="Potassium" data-group="Electrolytes / acid–base balance">
+  <div class="cardhead">
+    <div class="labname">Potassium</div>
+    <div class="labcode">Potassium</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_Potassium_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_Potassium_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="Calcium" data-group="Electrolytes / acid–base balance">
+  <div class="cardhead">
+    <div class="labname">Calcium</div>
+    <div class="labcode">Calcium</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_Calcium_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_Calcium_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="Chloride" data-group="Electrolytes / acid–base balance">
+  <div class="cardhead">
+    <div class="labname">Chloride</div>
+    <div class="labcode">Chloride</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_Chloride_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_Chloride_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="Total_CO2" data-group="Electrolytes / acid–base balance">
+  <div class="cardhead">
+    <div class="labname">Total_CO2</div>
+    <div class="labcode">Total_CO2</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_Total_CO2_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_Total_CO2_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+      </div>
+
+      <div class="grouphead">Inflammation / cell counts</div>
+      <div class="grid">
+<div class="card" data-lab="WBC" data-group="Inflammation / cell counts">
+  <div class="cardhead">
+    <div class="labname">WBC</div>
+    <div class="labcode">WBC</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_WBC_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_WBC_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+      </div>
+
+      <div class="grouphead">Muscle / myocardial enzymes</div>
+      <div class="grid">
+<div class="card" data-lab="Creatine_Kinase" data-group="Muscle / myocardial enzymes">
+  <div class="cardhead">
+    <div class="labname">Creatine_Kinase</div>
+    <div class="labcode">Creatine_Kinase</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_Creatine_Kinase_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_Creatine_Kinase_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+
+<div class="card" data-lab="CK_MB" data-group="Muscle / myocardial enzymes">
+  <div class="cardhead">
+    <div class="labname">CK_MB</div>
+    <div class="labcode">CK_MB</div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="plots/14day_death_CK_MB_RCS_multivariable.html" target="_blank"><span class="pill">14D</span> 14 Day Death</a>
+    <a class="btn" href="plots/GOSE_6Month_Unfavorable_CK_MB_RCS_multivariable.html" target="_blank"><span class="pill">6M</span> 6 Month (GOSE ≤ 4)</a>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="sectionhead">
+        <div class="h2">Debug outputs</div>
+        <div class="note">If you enabled debug logs in R, check debug_failures.csv under the output folder</div>
+      </div>
+      <div class="note">
+        This index file assumes plots are located in <code>plots/</code> with filenames like
+        <code>14day_death_&lt;LAB&gt;_RCS_multivariable.html</code> and
+        <code>GOSE_6Month_Unfavorable_&lt;LAB&gt;_RCS_multivariable.html</code>.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---- prettify labels AFTER DOM is ready (fixes underscore not being replaced)
+    function prettyLabName(code) {
+      if (code === "CK_MB") return "CK-MB";
+      return (code || "").replaceAll("_", " ");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Update card titles/codes from data-lab
+      document.querySelectorAll(".card[data-lab]").forEach(card => {
+        const lab = card.getAttribute("data-lab");
+
+        const nameEl = card.querySelector(".labname");
+        if (nameEl) nameEl.textContent = prettyLabName(lab);
+
+        const codeEl = card.querySelector(".labcode");
+        if (codeEl) codeEl.textContent = prettyLabName(lab);
+      });
+
+      // Also prettify any leftover raw tokens in group text (safe + CK_MB exception)
+      document.querySelectorAll(".grouphead, .note, .subtitle").forEach(el => {
+        const t = el.textContent || "";
+        el.textContent = t.replaceAll("CK_MB", "CK-MB").replaceAll("_", " ");
+      });
+
+      // Search
+      const q = document.getElementById('q');
+      const cards = Array.from(document.querySelectorAll('.card'));
+      function norm(s){ return (s||'').toLowerCase().replace(/\s+/g,''); }
+      function run(){
+        const term = norm(q.value);
+        cards.forEach(c=>{
+          const lab = norm(c.getAttribute('data-lab'));
+          const txt = norm(c.innerText);
+          const ok = (!term) || lab.includes(term) || txt.includes(term);
+          c.classList.toggle('hidden', !ok);
+        });
+      }
+      q.addEventListener('input', run);
     });
-  }
-  q.addEventListener('input', run);
-</script>
+  </script>
 </body>
 </html>
+
